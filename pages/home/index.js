@@ -3,6 +3,12 @@ import {signOut, useSession, getSession} from "next-auth/react";
 import React, {useEffect, useState} from "react";
 import Image from 'next/image'
 import TwitterBirdLogo from "../../asset/icons/logo-twitter-png-5860.png";
+import Trend from "../../components/Trending/Trend";
+import Tweet from "../../components/Tweet/Tweet";
+import MenuNavbar from "../../components/MenuNavbar/MenuNavbar";
+import MenuNavbarTwo from "../../components/MenuNavbar/MenuNavbarTwo";
+import MenuNavbarThree from "../../components/MenuNavbar/MenuNavbarThree";
+import WhoFollowPeople from "../../components/WhoFollowPeople/WhoFollowPeople";
 
 
 function Home({checkAuth}) {
@@ -57,7 +63,7 @@ function Home({checkAuth}) {
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <link rel="shortcut icon" href="/logo-twitter-png-5860-16x16.ico" />
                 </Head>
-                <div className={`min-h-screen bg-red-300 flex`}>
+                <div className={`min-h-screen flex`}>
                     <div style={{borderRight : '1px solid rgb(239,243,244)'}} className={`w-[55%] md:w-[30%] ${showNavigation ? 'block absolute inset-0 min-h-screen z-50' : 'hidden min-h-fit'} lg:block lg:w-[25%] bg-white`}>
                         <div className={`h-8 ${showNavigation ? 'flex' : 'hidden'} justify-between p-2 items-center`}>
                             <h2 className={"text-lg font-bold mobile:text-sm"}>Account Info</h2>
@@ -97,71 +103,7 @@ function Home({checkAuth}) {
                                         height={40}
                                     />
                                 </div>
-                                <ul>
-                                    <li className={"lg:mb-8 lg:mt-3 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
-                                            </svg>
-                                            Profile
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
-                                            </svg>
-                                            List
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/>
-                                            </svg>
-                                            Topics
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9"/>
-                                            </svg>
-                                            Bookmarks
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-                                            </svg>
-                                            Moment
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 mb-3"}>
-                                        <p className={"lg:text-xl"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/>
-                                            </svg>
-                                            Newsletter
-                                        </p>
-                                    </li>
-                                    <li className={"lg:mb-8 lg:block hidden"}>
-                                        <button style={{backgroundColor : 'rgb(29,155,240)'}} className={"rounded-full text-white font-bold lg:text-xl w-52 h-14"}>Tweet</button>
-                                    </li>
-                                </ul>
+                                <MenuNavbar/>
                             </div>
                         </div>
                         <div className={"h-px w-full lg:hidden"} style={{backgroundColor : 'rgb(239,243,244)'}}>
@@ -169,38 +111,7 @@ function Home({checkAuth}) {
                         </div>
                         <div className={"p-2 lg:hidden"}>
                             <div>
-                                <ul>
-                                    <li className={"mb-3"}>
-                                        <p className={"text-sm"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
-                                            </svg>
-                                            Twitter for Professionals
-                                        </p>
-                                    </li>
-                                    <li className={"mb-3"}>
-                                        <p className={"text-sm"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
-                                            </svg>
-                                            Twitter Ads
-                                        </p>
-                                    </li>
-                                    <li className={"mb-3"}>
-                                        <p className={"text-sm"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
-                                            </svg>
-                                            Analytics
-                                        </p>
-                                    </li>
-                                </ul>
+                                <MenuNavbarTwo/>
                             </div>
                         </div>
                         <div className={"h-px w-full lg:hidden"} style={{backgroundColor : 'rgb(239,243,244)'}}>
@@ -208,30 +119,7 @@ function Home({checkAuth}) {
                         </div>
                         <div className={"p-2 lg:hidden"}>
                             <div>
-                                <ul>
-                                    <li className={"mb-3"}>
-                                        <p className={"text-sm"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/>
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                            </svg>
-                                            Settings and privacy
-                                        </p>
-                                    </li>
-                                    <li className={"mb-3"}>
-                                        <p className={"text-sm"}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" className="w-6 h-6 mr-3 inline-block">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/>
-                                            </svg>
-                                            Help Center
-                                        </p>
-                                    </li>
-                                </ul>
+                                <MenuNavbarThree/>
                             </div>
                         </div>
                         <div className={"h-px w-full lg:hidden"} style={{backgroundColor : 'rgb(239,243,244)'}}>
@@ -262,7 +150,7 @@ function Home({checkAuth}) {
                         </div>
                     </div>
 
-                    <div className={`min-h-fit w-[100%] lg:w-[50%] bg-blue-400 overflow-hidden`}>
+                    <div className={`min-h-fit w-[100%] lg:w-[50%] overflow-hidden`}>
                         <div className={"bg-white h-12 grid items-center p-2"}>
                             <div className={"flex gap-6"}>
                                 <div className={`rounded-full w-[30px] block lg:hidden h-[30px] overflow-hidden`}>
@@ -354,318 +242,16 @@ function Home({checkAuth}) {
                             </div>
                         </div>
                         <div className={"bg-white overflow-y-auto h-[500px]"}>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{borderBottom : '1px solid rgb(239,243,244)'}} className={"min-h-[80px] flex"}>
-                                <div className={"w-[15%] min-h-max grid items-start justify-center"}>
-                                    <div className={`rounded-full w-[40px] block h-[40px] mt-3 overflow-hidden`}>
-                                        <Image
-                                            src={session.user.image}
-                                            width={48}
-                                            height={48}
-                                            className={"cursor-pointer"}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={"w-[85%] pt-0.5 pb-0.5 min-h-max overflow-hidden"}>
-                                    <div className={"text-sm"}>
-                                        <p className={"font-bold inline-block"}>Mupi</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>@moviemenfes</p>
-                                        <p style={{color : '#536471'}} className={"inline-block ml-1"}>  3h</p>
-                                    </div>
-                                    <div className={"mt-1"}>
-                                        <p className={"text-sm"}>did it hurt? when u realised u weren’t that special</p>
-                                    </div>
-                                    <div className={"w-[80%] justify-between flex min-h-full mt-3 p-0.5"}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] h-[18.5px] hover:bg-[#DEF1EB] hover:text-[#2AC491] hover:rounded-full hover:p-0.5 text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#F7E0EB] hover:rounded-full hover:p-0.5 hover:text[#F86FAF] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" className="w-[18.5px] hover:bg-[#E1EEF6] hover:rounded-full hover:p-0.5 hover:text-[#1A8CD8] h-[18.5px] text-[#536471] cursor-pointer">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
+                            <Tweet image={session.user.image}/>
+                            <Tweet image={session.user.image}/>
+                            <Tweet image={session.user.image}/>
+                            <Tweet image={session.user.image}/>
+                            <Tweet image={session.user.image}/>
+                            <Tweet image={session.user.image}/>
                         </div>
                     </div>
 
-                    <div className={"min-h-fit hidden lg:block lg:w-[25%] bg-green-400"}>
+                    <div className={"min-h-fit hidden lg:block lg:w-[25%] bg-white"}>
                         <div className={"min-h-full w-[90%] mx-auto bg-white pt-1"}>
                             <div className={"h-[50px] rounded-full flex overflow-hidden items-center bg-[#EFF3F4]"}>
                                 <div className={"w-[15%] flex justify-center"}>
@@ -677,11 +263,24 @@ function Home({checkAuth}) {
                                 </div>
                                 <input className={"w-[85%] bg-[#EFF3F4] outline-none border-none text-sm text-[#566774]"} type="text" placeholder={"Search Twitter"}/>
                             </div>
-                            <div className={"mt-3"} style={{borderTop : '1px solid rgb(239,243,244)'}}>
-                                <div className={"min-h-[1000px] bg-[#EFF3F4] rounded-[20px] pl-3 pt-3"}>
-                                    <p className={"font-extrabold text-xl"}>Trends for you</p>
+                            <div className={"mt-3 overflow-hidden"} style={{borderTop : '1px solid rgb(239,243,244)'}}>
+                                <div className={"h-[450px] overflow-y-scroll bg-[#EFF3F4] rounded-[20px] pt-3"}>
+                                    <p className={"font-extrabold text-xl pl-3"}>Trends for you</p>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
+                                    <Trend/>
                                 </div>
-                                
+                            </div>
+                            <div className={"h-[150px] mt-3 overflow-y-scroll bg-[#EFF3F4] rounded-[20px] pt-3"}>
+                                <p className={"font-extrabold text-xl pl-3"}>Who to Follow</p>
+                                <WhoFollowPeople image={session.user.image}/>
+                                <WhoFollowPeople image={session.user.image}/>
                             </div>
                         </div>
                     </div>
